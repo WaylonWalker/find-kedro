@@ -207,7 +207,9 @@ We use [SemVer](https://semver.org/) for versioning. For the versions available,
 
 ## ![Authors](./art/headers/7.png)
 
-* Waylon Walker - _Original Author_
+[![Waylon Walker](https://avatars1.githubusercontent.com/u/22648375?s=120&v=4)](https://github.com/WaylonWalker) - Waylon Walker - _Original Author_
+
+[![Zain Patel](https://avatars3.githubusercontent.com/u/30357972?s=120&v=4)](https://github.com/mzjp2) - Zain Patel
 
 ## ![License](./art/headers/8.png)
 
