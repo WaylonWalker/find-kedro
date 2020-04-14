@@ -13,10 +13,10 @@ pipelines, while yielding production ready pipelines. `find-kedro` enhances this
 experience by adding a pytest like node/pipeline discovery eliminating the need 
 to bubble up pipelines through modules.
 
-When Working on larger pipelines it is advisable to break your pipeline down 
+When working on larger pipelines it is advisable to break your pipeline down 
 into different sub-modules which requires knowledge of building python libraries,
 and knowing how to properly import each module.  While this is not too difficult, 
-in some cases it can trip up even the most senior engineers, loosing precious
+in some cases it can trip up even the most senior engineers, losing precious
 feature development time to debugging a library.
 
 ## ![Installation](./art/headers/2.png)
@@ -26,6 +26,7 @@ feature development time to debugging a library.
 ``` console
 pip install find-kedro
 ```
+
 ## ![Python Usage](./art/headers/3.png)
 
 The recommended usage of `find-kedro` is to implement it directly into your
@@ -44,11 +45,11 @@ class ProjectContext(KedroContext):
 
 `find-kedro` will not execute any functions, it will simply look for variables 
 that match the `pattern` and identify if they are a `kedro.pipeline.Pipeline`,
-`kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.Node`.  If so
+`kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.Node`'s.  If so
 it will collect them into the dictionary of pipelines.
 
 There are currently **three** ways that pipelines are typically constructed with
-`find-kedro`; **lists**, **single-nodes**, **pipelines**.
+`find-kedro`; **lists**, **single-nodes**, and **pipelines**.
 
 #### Lists
 
@@ -75,7 +76,7 @@ pipeline = [
 ```
 
 It is also convenient many times to keep the node definition close to the function
-definition of the node to be ran.  for this reason.  Many times I define the 
+definition of the node to be ran for this reason.  Many times I define the 
 list at the top of the file, then append to it as I go.
 
 ``` python
@@ -95,7 +96,6 @@ nodes.append(
             test_y="example_test_y",
         ),
     )
-]
 )
 ```
 
@@ -132,17 +132,18 @@ from kedro.pipeline import node, Pipeline
 from .nodes import split_data
 
 split_node = Pipeline(
-  [
-    node(
-      split_data,
-      ["example_iris_data", "params:example_test_data_ratio"],
-      dict(
-        train_x="example_train_x",
-        train_y="example_train_y",
-        test_x="example_test_x",
-        test_y="example_test_y",
-    ),
-]
+    [
+        node(
+            split_data,
+            ["example_iris_data", "params:example_test_data_ratio"],
+            dict(
+                train_x="example_train_x",
+                train_y="example_train_y",
+                test_x="example_test_x",
+                test_y="example_test_y",
+            ),
+        )
+    ]
 )
 ```
 
@@ -156,7 +157,7 @@ When using fully qualified imports
 
 ### ![CLI Usage](./art/headers/4.png)
 
-The cli provides a handy interface to search your project for nodes
+The CLI provides a handy interface to search your project for nodes
 
 ```
 Usage: find-kedro [OPTIONS]
