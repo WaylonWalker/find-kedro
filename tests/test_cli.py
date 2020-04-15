@@ -20,7 +20,7 @@ def test_version():
     runner = CliRunner()
     result = runner.invoke(cli, ["--version"])
     assert result.exit_code == 0
-    assert result.output == f"{__version__}\n"
+    assert __version__ in result.output
 
 
 def test_help():

@@ -20,6 +20,9 @@ Options:
 ```
 
 """
+import os
+import sys
+
 import click
 from pygments import highlight
 from pygments.formatters import TerminalFormatter
@@ -58,7 +61,6 @@ __version__ = "0.0.2"
     type=click.Path(exists=False, file_okay=False),
     help="Path to save the static site to",
 )
-@click.option("--version", default=False, is_flag=True, help="Prints version and exits")
 @click.option(
     "--verbose",
     "-v",
@@ -66,23 +68,20 @@ __version__ = "0.0.2"
     is_flag=True,
     help="Prints extra information for debugging",
 )
-def cli(file_patterns, patterns, directory, version, verbose):
+@click.version_option(__version__, "-V", "--version", help="Prints version and exits")
+def cli(file_patterns, patterns, directory, verbose):
     if verbose:
-        import sys
-        import os
+        click.echo("python version: {}".format(sys.version))
+        click.echo("current directory: {}".format(os.getcwd()))
+        click.echo()
 
-        print("python version: ", sys.version)
-        print("current directory ", os.getcwd())
+        click.echo("find nodes recieved the following input")
+        click.echo("file_patterns: {}".format(file_patterns))
+        click.echo("patterns: {}".format(patterns))
+        click.echo("directory: {}".format(directory))
+        click.echo("version: {}".format(__version__))
+        click.echo("verbose: {}".format(verbose))
 
-        print("find nodes recieved the following input")
-        print("file_patterns: ", file_patterns)
-        print("patterns", patterns)
-        print("directory: ", directory)
-        print("version: ", version)
-        print("verbose: ", verbose)
-    if version:
-        click.echo(__version__)
-        return True
     pipelines = find_kedro(
         file_patterns=file_patterns,
         patterns=patterns,
