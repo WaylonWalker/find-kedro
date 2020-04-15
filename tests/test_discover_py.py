@@ -1,3 +1,7 @@
+"""
+tests various different patterns of library and ensures that the default patterns
+will find the nodes.  This ensures that the project structure does not matter.
+"""
 import pytest
 
 from find_kedro import find_kedro
