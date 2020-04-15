@@ -1,5 +1,5 @@
 ## Help us to help you!
-Your Awesome for considering making a contribution to our library!
+You're Awesome for considering making a contribution to our library!
 Thank you for taking the time to contribute!
 
 * [Suggesting a feature](#suggesting-a-feature)
@@ -18,9 +18,9 @@ When suggesting a feature, make sure to:
 
 ## Filing a bug report
 
-If all else fails then please raise an Issue to let us know. Be as detailed as possible, and be ready to answer questions when we get back to you. Make sure you:
+If all else fails then please raise an issue to let us know. Be as detailed as possible, and be ready to answer questions when we get back to you. Make sure you:
 
-* Tell us version of kedro
+* Tell us your version of kedro
 * Tell us your version of find-kedro
 * Tell us your version of python
 
@@ -28,7 +28,7 @@ If all else fails then please raise an Issue to let us know. Be as detailed as p
 
 If you've decided to fix a bug, even something as small as a single-letter typo then great! Anything that improves the code/documentation for all future users is warmly welcomed.
 
-If you decide to work on a  requested feature it's best to let us (and everyone else) know what you're working on to avoid any duplciation of effort. You can do this by replying to the original Issue for the request.
+If you decide to work on a requested feature it's best to let us (and everyone else) know what you're working on to avoid any duplciation of effort. You can do this by replying to the original Issue for the request.
 
 If you want to contribute an example; go for it! We might not always be able to accept your code, but there's a lot to be learned from trying anyway and if you're new to GitHub we're willing to guide you on that journey.
 
