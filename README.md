@@ -1,27 +1,16 @@
 # ![Find Kedro Title](./art/find-kedro.png)
 
-Find Kedro is a small library to enhance your kedro experience.  It looks through
-your modules to find kedro pipelines, nodes, and iterables (lists, sets, 
-tuples) of nodes and assembles them into a dictionary of pipelines, with each
-module creating its own pipeline, and `__default__` being a combination of all
-pipelines.
+`find-kedro` is a small library to enhance your kedro experience.  It looks through your modules to find kedro pipelines, nodes, and iterables (lists, sets, tuples) of nodes.  It then assembles them into a dictionary of pipelines, each module will create a separate pipeline, and `__default__` being a combination of all pipelines.  This format is compatible with the kedro `_create_pipelines` format.
 
 ## ![Motivation](./art/headers/1.png)
 
-`kedro` is an ✨ amazing project that allows for super fast prototyping of data
-pipelines, while yielding production ready pipelines. `find-kedro` enhances this 
-experience by adding a pytest like node/pipeline discovery eliminating the need 
-to bubble up pipelines through modules.
+`kedro` is a ✨ fantastic project that allows for super-fast prototyping of data pipelines, while yielding production-ready pipelines. `find-kedro` enhances this experience by adding a pytest like node/pipeline discovery eliminating the need to bubble up pipelines through modules.
 
-When working on larger pipelines it is advisable to break your pipeline down 
-into different sub-modules which requires knowledge of building python libraries,
-and knowing how to properly import each module.  While this is not too difficult, 
-in some cases it can trip up even the most senior engineers, losing precious
-feature development time to debugging a library.
+When working on larger pipeline projects, it is advisable to break your project down into different sub-modules which requires knowledge of building python libraries, and knowing how to import each module correctly.  While this is not too difficult, in some cases, it can trip up even the most senior engineers, losing precious feature development time to debugging a library.
 
 ## ![Installation](./art/headers/2.png)
 
-`find-kedro` is deployed to pypi and can easily be pip installed
+`find-kedro` is deployed to pypi and can easily be pip installed.
 
 ``` console
 pip install find-kedro
@@ -29,8 +18,7 @@ pip install find-kedro
 
 ## ![Python Usage](./art/headers/3.png)
 
-The recommended usage of `find-kedro` is to implement it directly into your
-projects `run.py` module
+The recommended usage of `find-kedro` is to implement it directly into your projects `run.py` module
 
 ``` python
 from kedro.context import KedroContext
@@ -43,18 +31,13 @@ class ProjectContext(KedroContext):
 
 ### Creating nodes
 
-`find-kedro` will not execute any functions, it will simply look for variables 
-that match the `pattern` and identify if they are a `kedro.pipeline.Pipeline`,
-`kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.Node`'s.  If so
-it will collect them into the dictionary of pipelines.
+`find-kedro` will not execute any functions.  It will simply look for variables that match the `pattern` and identify if they are a `kedro.pipeline.Pipeline`, `kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.  Node`'s.  If so, it will collect them into the dictionary of pipelines.
 
-There are currently **three** ways that pipelines are typically constructed with
-`find-kedro`; **lists**, **single-nodes**, and **pipelines**.
+There are typically **three** ways that pipelines are constructed with `find-kedro`; **lists**, **single-nodes**, and **pipelines**.
 
 #### Lists
 
-Any pattern matched list will be flattened and collected into the pipeline.  They
-can be created all at once in the list definition.
+Any pattern matched list will be flattened and collected into the pipeline.  Nodes can be created all at once in the list definition.
 
 ``` python
 # my-proj/pipelinies/data_engineering/pipeline
@@ -75,9 +58,7 @@ pipeline = [
 ]
 ```
 
-It is also convenient many times to keep the node definition close to the function
-definition of the node to be ran for this reason.  Many times I define the 
-list at the top of the file, then append to it as I go.
+It is also convenient many times to keep the node definition close to the function definition.  Many times I define the list at the top of the file, then append to it as I go.
 
 ``` python
 # my-proj/pipelinies/data_engineering/pipeline
@@ -101,8 +82,7 @@ nodes.append(
 
 #### Nodes
 
-All pattern matched `kedro.pipeline.node.Node` objects will be collected into the
-pipeline.
+All pattern matched `kedro.pipeline.node.Node` objects will get collected into the pipeline.
 
 ``` python
 # my-proj/pipelinies/data_engineering/pipeline
@@ -123,11 +103,10 @@ split_node = node(
 
 #### Pipeline
 
-All pattern matched `kedro.pipeline.Pipeline` objects will be collected into the
-pipeline.
+All pattern matched `kedro.pipeline.Pipeline` objects will get collected into the pipeline.
 
 ``` python
-# my-proj/pipelinies/data_engineering/pipeline
+# my-project/pipelinies/data_engineering/pipeline
 from kedro.pipeline import node, Pipeline
 from .nodes import split_data
 
@@ -150,10 +129,8 @@ split_node = Pipeline(
 
 ### Fully Qualified imports
 
-When using fully qualified imports 
-`from my_proj.pipelines.data_science.nodes import split_data` instead of 
-`from .nodes split_data` you will need to make sure that your project is installed,
- in your current path, or you set the directory
+When using fully qualified imports `from my_proj.pipelines.data_science.nodes import split_data` instead of 
+relative imports `from .nodes split_data` you will need to make sure that your project is installed, in your current path, or you set the directory
 
 ### ![CLI Usage](./art/headers/4.png)
 
