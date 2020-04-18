@@ -5,7 +5,7 @@ import sys
 from collections.abc import Iterable  # < py38
 from fnmatch import fnmatch
 from pathlib import Path
-from typing import List, Dict, Tuple, Union, Generator
+from typing import Dict, Generator, List, Tuple, Union
 
 from colorama import Fore
 from kedro.pipeline import Pipeline, node
@@ -48,8 +48,8 @@ def find_kedro(
     for nodes_file in nodes_files:
         key = (
             str(nodes_file)
-            .replace(f"{directory}/", "")
-            .replace("/", ".")
+            .replace(f"{directory}{os.sep}", "")
+            .replace(os.sep, ".")
             .replace(".py", "")
         )
         modules[key] = _import(nodes_file, directory)
@@ -223,19 +223,28 @@ def _flatten(items: Iterable) -> Generator:
             yield x
 
 
+def _make_path_relative(path: Path, directory: Path) -> Path:
+    """removes directory from path, and any leading anchors"""
+    relative = Path(str(path.absolute()).replace(str(directory.absolute()), ""))
+    if str(relative)[: len(os.sep)] == os.sep:
+        relative = Path(str(relative)[len(os.sep) :])
+    return relative
+
+
 def _import(path: Path, directory: Path, verbose: bool = False):
     """dynamically imports module given a path"""
     cwd = os.getcwd()
     os.chdir(directory)
     name = path.name
-    path = str(path).replace(str(directory) + "/", "")
+    # path = str(path).replace(str(directory) + "/", "")
+    path = _make_path_relative(path, directory)
     try:
         spec = importlib.util.spec_from_file_location(name, path)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
     except (ModuleNotFoundError, ValueError):
         module = _use_importmodule(
-            str(path).replace("/", ".").replace(".py", ""), verbose=verbose
+            str(path).replace(os.sep, ".").replace(".py", ""), verbose=verbose
         )
     os.chdir(cwd)
 

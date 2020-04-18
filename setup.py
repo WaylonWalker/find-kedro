@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 NAME = "find-kedro"
 
-README = (Path(__file__).parent / "README.md").read_text()
+README = (Path(__file__).parent / "README.md").read_text(encoding="utf-8")
 
 setup(
     name=NAME,
