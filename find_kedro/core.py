@@ -48,8 +48,8 @@ def find_kedro(
     for nodes_file in nodes_files:
         key = (
             str(nodes_file)
-            .replace(f"{directory}/", "")
-            .replace("/", ".")
+            .replace(f"{directory}{os.sep}", "")
+            .replace(os.sep, ".")
             .replace(".py", "")
         )
         modules[key] = _import(nodes_file, directory)
@@ -60,8 +60,7 @@ def find_kedro(
     for module in modules:
         module_nodes = _discover_nodes(modules[module], patterns)
         if module_nodes != []:
-            key = str(_make_path_relative(Path(module), directory)).replace(os.sep, ".")
-            nodes[key] = module_nodes
+            nodes[module] = module_nodes
     _vprint("module found with nodes pattern match", verbose, nodes=nodes)
 
     pipelines = _generate_pipelines(nodes, verbose=verbose)
