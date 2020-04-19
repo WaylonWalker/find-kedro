@@ -90,6 +90,10 @@ html .md-nav--primary .md-nav__title--site {
     color: transparent;
 }
 
+.md-header-nav__source .md-typeset h1, h2, h3, h4, a {
+    color: white;
+}
+
 .md-typeset pre {background: hsla(0, 0%, 100%,.05);}
 .md-typeset code {
     background:  hsla(0, 0%, 100%,.05);
