@@ -17,7 +17,7 @@ jobs:
       with:
         python-version: 3.7
     - name: install mkdocs
-      run: pip install mkdocs
+      run: pip install mkdocs portray
     - name: build docs
       run: mkdocs build
     - name: GitHub Pages
