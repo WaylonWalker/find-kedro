@@ -10,7 +10,7 @@ When working on larger pipeline projects, it is advisable to break your project 
 
 ## ![Installation](./art/headers/2.png)
 
-`find-kedro` is deployed to pypi and can easily be pip installed.
+`find-kedro` is deployed to pypi and can easily be `pip` installed.
 
 ``` console
 pip install find-kedro
