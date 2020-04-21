@@ -2,6 +2,8 @@
 
 `find-kedro` is a small library to enhance your kedro experience.  It looks through your modules to find kedro pipelines, nodes, and iterables (lists, sets, tuples) of nodes.  It then assembles them into a dictionary of pipelines, each module will create a separate pipeline, and `__default__` being a combination of all pipelines.  This format is compatible with the kedro `_create_pipelines` format.
 
+[![Build-Docs](https://github.com/WaylonWalker/find-kedro/workflows/Build-Docs/badge.svg?branch=master)](https://find-kedro.waylonwalker.com)
+
 ## ![Motivation](./art/headers/1.png)
 
 `kedro` is a ✨ fantastic project that allows for super-fast prototyping of data pipelines, while yielding production-ready pipelines. `find-kedro` enhances this experience by adding a pytest like node/pipeline discovery eliminating the need to bubble up pipelines through modules.
