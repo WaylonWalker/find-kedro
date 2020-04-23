@@ -42,18 +42,18 @@ markdown_extensions:
 #               class: mermaid
 #               format: !!python/name:pymdownx.superfences.fence_div_format
 
-extra:
-    social:
-        - type: 'github'
-          link: 'https://github.com/waylonwalker/find-kedro'
-        - type: 'twitter'
-          link: 'https://twitter.com/_waylonwalker'
-        - type: 'linkedin'
-          link: 'https://www.linkedin.com/in/waylonwalker'
-        - type: 'rss'
-          link: 'https://dev.to/waylonwalker'
-        - type: 'globe'
-          link: 'https://waylonwalker.com'
+# extra:
+#     social:
+#         - type: 'github'
+#           link: 'https://github.com/waylonwalker/find-kedro'
+#         - type: 'twitter'
+#           link: 'https://twitter.com/_waylonwalker'
+#         - type: 'linkedin'
+#           link: 'https://www.linkedin.com/in/waylonwalker'
+#         - type: 'rss'
+#           link: 'https://dev.to/waylonwalker'
+#         - type: 'globe'
+#           link: 'https://waylonwalker.com'
 
 extra_css:
     - 'css/termynal.css'
