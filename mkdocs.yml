@@ -1,0 +1,65 @@
+site_name: find-kedro
+site_description: 
+site_url: 
+
+theme:
+    name: 'material'
+    palette:
+        primary: '#FFCC00'
+        accent: 'teal'
+    logo: 'art/logo.png'
+    favicon: 'art/logo.png'
+
+repo_name: waylonwalker/find-kedro
+repo_url: https://github.com/waylonwalker/find-kedro
+edit_uri: ''
+
+nav:
+    - find-kedro: 'index.md'
+    - motivation: 'motivation.md'
+    - python-usage: 'python-usage.md'
+    - cli-usage: 'cli-usage.md'
+    - examples:
+      - examples/iris.md
+      - examples/more-nodes.md
+      - examples/titanic.md
+      - examples/spaceflights.md
+
+markdown_extensions:
+    - toc:
+        permalink: true
+    # - markdown.extensions.codehilite:
+    #     guess_lang: false
+    # - markdown_include.include:
+        # base_path: docs
+    - admonition
+    - codehilite
+      
+    - extra
+#     - pymdownx.superfences:
+#         custom_fences:
+#             - name: mermaid
+#               class: mermaid
+#               format: !!python/name:pymdownx.superfences.fence_div_format
+
+# extra:
+#     social:
+#         - type: 'github'
+#           link: 'https://github.com/waylonwalker/find-kedro'
+#         - type: 'twitter'
+#           link: 'https://twitter.com/_waylonwalker'
+#         - type: 'linkedin'
+#           link: 'https://www.linkedin.com/in/waylonwalker'
+#         - type: 'rss'
+#           link: 'https://dev.to/waylonwalker'
+#         - type: 'globe'
+#           link: 'https://waylonwalker.com'
+
+extra_css:
+    - 'css/termynal.css'
+    - 'css/custom.css'
+
+extra_javascript:
+    - 'https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js'
+    - 'js/termynal.js'
+    - 'js/custom.js'
