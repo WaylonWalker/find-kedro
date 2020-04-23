@@ -3,9 +3,9 @@ name: Build-Docs
 
 on:
   push:
-    branches: [ master, add-docs ]
+    branches: master
   pull_request:
-    branches: [ master, add-docs ]
+    branches: master
 
 jobs:
   build-docs:
