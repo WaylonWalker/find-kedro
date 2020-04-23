@@ -17,7 +17,7 @@ jobs:
       with:
         python-version: 3.6
     - name: install mkdocs
-      run: pip install mkdocs portray mkdocs-material
+      run: pip install mkdocs mkdocs-material
     - name: build docs
       run: mkdocs build
     - name: GitHub Pages
