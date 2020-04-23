@@ -1,5 +1,9 @@
 # Upcoming Release
 
+# 0.0.5
+
+Include LICENSE in manifest.in
+
 # 0.0.4
 
 Docs release
