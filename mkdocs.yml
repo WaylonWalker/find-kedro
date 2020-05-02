@@ -28,19 +28,19 @@ nav:
 markdown_extensions:
     - toc:
         permalink: true
-    # - markdown.extensions.codehilite:
-    #     guess_lang: false
+    - markdown.extensions.codehilite:
+        guess_lang: false
     # - markdown_include.include:
-        # base_path: docs
+    #     base_path: docs
     - admonition
     - codehilite
       
     - extra
-#     - pymdownx.superfences:
-#         custom_fences:
-#             - name: mermaid
-#               class: mermaid
-#               format: !!python/name:pymdownx.superfences.fence_div_format
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_div_format
 
 # extra:
 #     social:

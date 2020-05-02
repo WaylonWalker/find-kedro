@@ -12,7 +12,8 @@ let termynals = [];
 
 function createTermynals() {
     document
-        .querySelectorAll(`.${termynalActivateClass} .codehilite`)
+        // .querySelectorAll(`.${termynalActivateClass} .coehilite`)
+        .querySelectorAll(`.${termynalActivateClass} .highlight`)
         .forEach(node => {
             const text = node.textContent;
             const lines = text.split("\n");
@@ -103,3 +104,12 @@ function loadVisibleTermynals() {
 window.addEventListener("scroll", loadVisibleTermynals);
 createTermynals();
 loadVisibleTermynals();
+
+
+const figlet = ""
+"  __ _           _       _            _           \n" +
+    " / _(_)_ __   __| |     | | _____  __| |_ __ ___  \n" +
+    "| |_| | '_ \ / _` |_____| |/ / _ \/ _` | '__/ _ \ \n" +
+    "|  _| | | | | (_| |_____|   <  __/ (_| | | | (_) |\n" +
+    "|_| |_|_| |_|\__,_|     |_|\_\___|\__,_|_|  \___/ \n"
+console.log(figlet);
