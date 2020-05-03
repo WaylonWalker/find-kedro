@@ -1,7 +1,7 @@
 site_name: find-kedro
 site_description: 
-site_url: find-kedro.waylonwalker.com
-google_analytics: ['UA-165412239-1', 'find-kedro.waylonwalker.com']
+site_url: https://find-kedro.waylonwalker.com
+google_analytics: ['UA-165412239-1', 'https://find-kedro.waylonwalker.com']
 
 theme:
     name: 'material'
