@@ -1,3 +1,4 @@
+document.querySelectorAll('.gp').forEach(t => t.innerHTML = "<span style='color: #62D0E6'>waylon</span><span style='color: #888'>@</span><span style='color: #F92672'>find-kedro</span> $")
 document.querySelectorAll(".use-termynal").forEach(node => {
     node.style.display = "block";
     new Termynal(node, {
