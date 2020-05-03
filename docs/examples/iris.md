@@ -1,7 +1,7 @@
 # iris
 
 
-The iris dataset is a datascience classic.  It is part of the default kedro pipeline
+The iris dataset is a data science classic.  It is part of the default kedro pipeline
 as of `0.15.9` if you choose to include an example pipeline, which we will use 
 for this example. This is a great starting point for your very first experience
 with `find-kedro`.  If you are already using kedro with a completed project there
@@ -27,7 +27,7 @@ $ actiavte find-kedro-iris
 
 Let's get after it and install `kedro` and `find-kedro` into our new environment.
 As I am unsure of what the iris example will look like in future versions of `kedro`
-I reccomend following along with `kedro==0.15.9`, but feel free to try it with
+I recommend following along with `kedro==0.15.9`, but feel free to try it with
 the latest if you are feeling adventurous.
 
 ``` console
@@ -64,6 +64,12 @@ Options:
   -V, --version              Prints version and exits
   --help                     Show this message and exit.
 ```
+
+
+> # Checkpoint
+> At this point your development machine is setup for the `find-kedro-iris` project.
+> Next we will get the project started by using `kedro-new`
+
 
 ## kedro new
 
