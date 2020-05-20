@@ -30,7 +30,7 @@ from pygments.lexers import JsonLexer
 
 from find_kedro.core import find_kedro
 
-__version__ = "0.0.5"
+__version__ = "0.1.0"
 
 
 # @click.group(name="Find-Kedro")
