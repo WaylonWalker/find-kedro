@@ -1,5 +1,9 @@
 # Upcoming Release
 
+# 0.1.0
+
+deduplicated `__default__` pipeline
+
 # 0.0.5
 
 Include LICENSE in manifest.in
