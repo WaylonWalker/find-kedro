@@ -12,11 +12,13 @@ pipeline to use `find-kedro`.
 
 ## Create a new Environment and activate
 
-I **CANNOT** recommend using separate environments for each project, example, or
+I **CANNOT** under emphasize the importance separate environments for each project, example, or
 toy that you create.  Not only does it help your project be easier to run later,
 but it prevents you from causing major issues inside of environments for you active
 development projects.  The **LAST** thing I want you to do is to wreck a day of 
 work by installing `find-kedro` and wrecking dependencies in a working environment.
+
+### example using conda
 
 ``` console
 $ conda create -n find-kedro-iris python=3.7 -y
@@ -29,6 +31,9 @@ Let's get after it and install `kedro` and `find-kedro` into our new environment
 As I am unsure of what the iris example will look like in future versions of `kedro`
 I recommend following along with `kedro==0.15.9`, but feel free to try it with
 the latest if you are feeling adventurous.
+
+> ## STOP
+> Before continuting make sure that you are using a separate environment for this example using, conda, pipenv, virtualenv or whatever your environment manager of choice is
 
 ``` console
 $ pip install kedro==0.15.9 find-kedro
