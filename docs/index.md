@@ -11,11 +11,13 @@
 > if you dont already have python and kedro installed follow the [kedro](https://kedro.readthedocs.io/en/stable/02_getting_started/01_prerequisites.html) prerequisites
 
 <div class="termy">
+
 ``` console
 pip install find-kedro
 ---> 100%
 Successfully installed find-kedro
 ```
+
 </div>
 
 
