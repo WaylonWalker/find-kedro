@@ -131,11 +131,17 @@ def _generate_pipelines(nodes: Dict, verbose: bool = False) -> Dict[str, List[No
     Returns:
         dict -- dictionary of pipelines with each .py file as its own pipeline,
         and every pipeline combined into __default__.
+    
+    ## Changelog
+
+    * 0.1.0 - deduplicated `__default__` pipeline
     """
     pipelines = {}
     for _node in nodes:
         pipelines[_node] = Pipeline(nodes[_node])
-    pipelines["__default__"] = Pipeline(list(pipelines.values()))
+    pipelines["__default__"] = Pipeline(
+        set(_flatten([p.nodes for p in pipelines.values()]))
+    )
     _vprint(f"generated pipelines", verbose, pipelines=pipelines)
     return pipelines
 
