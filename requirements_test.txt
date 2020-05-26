@@ -1,2 +1,5 @@
 pytest
 more-itertools
+pytest-cov
+mypy
+flake8

@@ -2,10 +2,9 @@ import importlib
 import importlib.util
 import os
 import sys
-from collections.abc import Iterable  # < py38
 from fnmatch import fnmatch
 from pathlib import Path
-from typing import Dict, Generator, List, Tuple, Union
+from typing import Any, Dict, Generator, Iterable, List, Union
 
 from colorama import Fore
 from kedro.pipeline import Pipeline, node
@@ -19,7 +18,7 @@ def find_kedro(
     patterns: raw_pattern_type = ["*node*", "*pipeline*"],
     directory: Union[str, Path] = ".",
     verbose: bool = False,
-):
+) -> Dict[str, Pipeline]:
     """
     collect kedro nodes into a single dictionary of pipelines
 
@@ -37,9 +36,16 @@ def find_kedro(
     """
     _vprint("find kedro start", verbose, main=True)
     directory = Path(directory)
-    sys.path.append(directory)
-    file_patterns, patterns = _cleanse_inputs(file_patterns, patterns, verbose=verbose)
-    nodes_files = _discover_files(directory, file_patterns, verbose=verbose)
+    sys.path.append(str(directory))
+    # file_patterns, patterns = _cleanse_inputs(file_patterns, patterns, verbose=verbose)
+    cleansed_file_patterns = _cleanse_inputs(
+        file_patterns, verbose=verbose, is_file_pattern_type=True
+    )
+    cleansed_patterns = _cleanse_inputs(
+        patterns, verbose=verbose, is_file_pattern_type=False
+    )
+
+    nodes_files = _discover_files(directory, cleansed_file_patterns, verbose=verbose)
 
     if len(nodes_files) == 0:
         _vprint("no modules found, Exiting Now", verbose)
@@ -58,7 +64,9 @@ def find_kedro(
     nodes = {}
 
     for module in modules:
-        module_nodes = _discover_nodes(modules[module], patterns)
+        module_nodes = _discover_nodes(
+            modules[module], cleansed_patterns, verbose=verbose
+        )
         if module_nodes != []:
             nodes[module] = module_nodes
     _vprint("module found with nodes pattern match", verbose, nodes=nodes)
@@ -68,7 +76,9 @@ def find_kedro(
     return pipelines
 
 
-def _vprint(title: str, verbose: bool = False, main: bool = False, **kwargs) -> None:
+def _vprint(
+    title: str, verbose: bool = False, main: bool = False, **kwargs: Any
+) -> None:
     if verbose:
         if main:
             print(
@@ -82,10 +92,8 @@ def _vprint(title: str, verbose: bool = False, main: bool = False, **kwargs) -> 
 
 
 def _cleanse_inputs(
-    file_patterns: Union[List[Union[str, float, int]], str, float, int],
-    patterns: Union[List[Union[str, float, int]], str, float, int],
-    verbose: bool = False,
-) -> Tuple[List[str]]:
+    patterns: raw_pattern_type, verbose: bool = False, is_file_pattern_type: bool = True
+) -> List[str]:
     """
     normalizes user input and ensures that inputs are properly typed.
 
@@ -96,31 +104,32 @@ def _cleanse_inputs(
 
     """
 
-    _vprint("raw inputs", verbose, file_patterns=file_patterns, patterns=patterns)
-    if type(file_patterns) == int or type(file_patterns) == float:
-        file_patterns = [str(file_patterns)]
-    if type(patterns) == int or type(patterns) == float:
-        patterns = [str(patterns)]
-    if type(file_patterns) == str:
-        file_patterns = [file_patterns]
+    _vprint("raw inputs", verbose, patterns=patterns)
+    # force List[str] type
+    if not isinstance(patterns, Iterable):
+        patterns = str(patterns)
     if type(patterns) == str:
-        patterns = [patterns]
-    file_patterns = [str(pattern) for pattern in file_patterns]
-    patterns = [str(pattern) for pattern in patterns]
-    file_patterns = [
-        pattern + ".py" if pattern[-3:] != ".py" else pattern
-        for pattern in file_patterns
-    ]
-    file_patterns = [
-        "**/" + pattern if pattern[:3] != "**/" else pattern
-        for pattern in file_patterns
-    ]
+        patterns = list(patterns)
 
-    _vprint("cleansed inputs", verbose, file_patterns=file_patterns, patterns=patterns)
-    return file_patterns, patterns
+    str_patterns = [str(pattern) for pattern in _flatten(patterns)]
+
+    if is_file_pattern_type:
+        cleansed_patterns = [
+            pattern + ".py" if pattern[-3:] != ".py" else pattern
+            for pattern in str_patterns
+        ]
+        cleansed_patterns = [
+            "**/" + pattern if pattern[:3] != "**/" else pattern
+            for pattern in str_patterns
+        ]
+    else:
+        cleansed_patterns = str_patterns
+
+    _vprint("cleansed inputs", verbose, patterns=cleansed_patterns)
+    return cleansed_patterns
 
 
-def _generate_pipelines(nodes: Dict, verbose: bool = False) -> Dict[str, List[Node]]:
+def _generate_pipelines(nodes: Dict, verbose: bool = False) -> Dict[str, Pipeline]:
     """
     generates a dictionary of pipelines to use in ProjectContet
 
@@ -131,18 +140,19 @@ def _generate_pipelines(nodes: Dict, verbose: bool = False) -> Dict[str, List[No
     Returns:
         dict -- dictionary of pipelines with each .py file as its own pipeline,
         and every pipeline combined into __default__.
-    
+
     ## Changelog
 
     * 0.1.0 - deduplicated `__default__` pipeline
     """
     pipelines = {}
+    _vprint("nodes for generating pipelines", verbose, nodes=nodes)
     for _node in nodes:
         pipelines[_node] = Pipeline(nodes[_node])
     pipelines["__default__"] = Pipeline(
         set(_flatten([p.nodes for p in pipelines.values()]))
     )
-    _vprint(f"generated pipelines", verbose, pipelines=pipelines)
+    _vprint("generated pipelines", verbose, pipelines=pipelines)
     return pipelines
 
 
@@ -169,8 +179,7 @@ def _discover_files(
     Returns
         list -- list of files that match the pattern within the given directory
     """
-    # _vprint(f'looking for files inside {str(directory)}', verbose)
-    files = []
+    files: List[Path] = list()
     for pattern in patterns:
         globbed = [
             file
@@ -190,13 +199,15 @@ def _discover_files(
     return files
 
 
-def _discover_nodes(module, patterns: List[str], verbose: bool = False) -> List[Node]:
+def _discover_nodes(
+    module: str, patterns: List[str], verbose: bool = False
+) -> List[Node]:
     """
     looks for variables with patterns within the given module
 
     returns a flat list of node objects
     """
-    nodes = []
+    nodes: List[Union[List, Node, Pipeline, List[Node]]] = []
     for pattern in patterns:
         nodes = [
             *nodes,
@@ -210,13 +221,30 @@ def _discover_nodes(module, patterns: List[str], verbose: bool = False) -> List[
         ]
     # remove kedro.pipeline.nodes
     nodes = [_node for _node in nodes if _node != node]
-    nodes = [n.nodes if type(n) == Pipeline else n for n in nodes]
-    nodes = [[n] if type(n) != list else n for n in nodes]
-    nodes = list(_flatten(nodes))
-    nodes = [_node for _node in nodes if isinstance(_node, Node)]
-    nodes = list(set(nodes))
+    _vprint("discovered patterns", verbose, nodes=nodes)
 
-    return nodes
+    def assert_pipeline_types(pipeline: Any) -> Union[Node, Pipeline, None]:
+        if isinstance(pipeline, Node):
+            return pipeline
+        if isinstance(pipeline, Pipeline):
+            return pipeline
+        else:
+            return None
+
+    def pipeline_to_nodes(pipeline: Union[Node, Pipeline]) -> List[Node]:
+        if isinstance(pipeline, Pipeline):
+            return pipeline.nodes
+        if isinstance(pipeline, list):
+            return pipeline
+        else:
+            return [pipeline]
+
+    asserted_nodes = [assert_pipeline_types(n) for n in list(_flatten(nodes))]
+    not_none_nodes = [n for n in list(_flatten(asserted_nodes)) if n is not None]
+    listed_nodes = list(_flatten([pipeline_to_nodes(n) for n in not_none_nodes]))
+    deduped_nodes = list(_flatten(list(set(listed_nodes))))
+
+    return deduped_nodes
 
 
 def _flatten(items: Iterable) -> Generator:
@@ -237,7 +265,9 @@ def _make_path_relative(path: Path, directory: Path) -> Path:
     return relative
 
 
-def _import(path: Path, directory: Path, verbose: bool = False):
+def _import(
+    path: Path, directory: Path, verbose: bool = False
+) -> Any:  # unsure how to type module
     """dynamically imports module given a path"""
     cwd = os.getcwd()
     os.chdir(directory)
@@ -247,17 +277,17 @@ def _import(path: Path, directory: Path, verbose: bool = False):
     try:
         spec = importlib.util.spec_from_file_location(name, path)
         module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-    except (ModuleNotFoundError, ValueError):
+        spec.loader.exec_module(module)  # type: ignore
+    except (ModuleNotFoundError, ValueError, AttributeError):
         module = _use_importmodule(
-            str(path).replace(os.sep, ".").replace(".py", ""), verbose=verbose
+            str(path).replace(os.sep, ".").replace(".py", ""), verbose=verbose  # type: ignore
         )
     os.chdir(cwd)
 
     return module
 
 
-def _use_importmodule(path: Path, verbose: bool = False):
+def _use_importmodule(path: Path, verbose: bool = False) -> Any:
     """
     relative imports do not work well with importlib.util.spec_from_file_location,
     and require a sys.path.append to be imported correctly.  For this reason
@@ -269,6 +299,6 @@ def _use_importmodule(path: Path, verbose: bool = False):
     #     path = path[1:]
 
     sys.path.append(os.getcwd())
-    mod = importlib.import_module(path)
+    mod = importlib.import_module(str(path))
     sys.path.pop()  # clean up path, do not permananatly change users path
     return mod

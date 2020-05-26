@@ -22,6 +22,7 @@ Options:
 """
 import os
 import sys
+from pathlib import Path
 
 import click
 from pygments import highlight
@@ -69,7 +70,7 @@ __version__ = "0.1.0"
     help="Prints extra information for debugging",
 )
 @click.version_option(__version__, "-V", "--version", help="Prints version and exits")
-def cli(file_patterns, patterns, directory, verbose):
+def cli(file_patterns: str, patterns: str, directory: Path, verbose: bool) -> None:
     if verbose:
         click.echo("python version: {}".format(sys.version))
         click.echo("current directory: {}".format(os.getcwd()))
