@@ -71,6 +71,7 @@ __version__ = "0.1.0"
 )
 @click.version_option(__version__, "-V", "--version", help="Prints version and exits")
 def cli(file_patterns: str, patterns: str, directory: Path, verbose: bool) -> None:
+    "find-kedro command line interface"
     if verbose:
         click.echo("python version: {}".format(sys.version))
         click.echo("current directory: {}".format(os.getcwd()))

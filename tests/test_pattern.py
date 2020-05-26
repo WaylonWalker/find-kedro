@@ -324,6 +324,7 @@ contents = [("file", content)]
 
 @pytest.mark.parametrize(" num_nodes, patterns, files", content)
 def test_create_file(tmpdir, num_nodes, patterns, files):
+    "test find-kedro works with various patterns for pipeline variables"
     make_files_and_cd(tmpdir, files)
 
     print(f"testing scenario {patterns}")

@@ -1,3 +1,15 @@
+"""
+punch versioning config, punch is used to change semver version of the project
+in every necessary place and properly tag git commit with a release.
+
+Install Punch
+
+    $ pip install punch
+
+To change version use punch -p <part> where part is major, minor, patch
+
+    $ punch -p patch
+"""
 __config_version__ = 1
 
 GLOBALS = {

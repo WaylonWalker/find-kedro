@@ -1,3 +1,4 @@
+"core functionality of find-kedro"
 import importlib
 import importlib.util
 import os
@@ -79,6 +80,7 @@ def find_kedro(
 def _vprint(
     title: str, verbose: bool = False, main: bool = False, **kwargs: Any
 ) -> None:
+    "prints message if verbose is True"
     if verbose:
         if main:
             print(
@@ -224,6 +226,10 @@ def _discover_nodes(
     _vprint("discovered patterns", verbose, nodes=nodes)
 
     def assert_pipeline_types(pipeline: Any) -> Union[Node, Pipeline, None]:
+        """
+        asserts that types are of Pipeline or Node
+        helper for mypy
+        """
         if isinstance(pipeline, Node):
             return pipeline
         if isinstance(pipeline, Pipeline):
@@ -232,6 +238,7 @@ def _discover_nodes(
             return None
 
     def pipeline_to_nodes(pipeline: Union[Node, Pipeline]) -> List[Node]:
+        "Extracts nodes from pipeline"
         if isinstance(pipeline, Pipeline):
             return pipeline.nodes
         if isinstance(pipeline, list):

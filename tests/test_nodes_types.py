@@ -182,6 +182,7 @@ contents = [
 
 @pytest.mark.parametrize("name, num_nodes, content", contents)
 def test_create_file(tmpdir, name, num_nodes, content):
+    "Test find-kedro can assemble pipelines from various methods of creating nodes"
     p = tmpdir.mkdir("nodes").join(f"{ name }.py")
     p.write(textwrap.dedent(content))
     pipelines = find_kedro(directory=tmpdir, verbose=True)

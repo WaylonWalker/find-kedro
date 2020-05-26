@@ -255,6 +255,7 @@ contents = [("file", content)]
 
 @pytest.mark.parametrize(" num_nodes, file_patterns, files", content)
 def test_create_file(tmpdir, num_nodes, file_patterns, files):
+    "test find-kedro works with various file patterns with relative path"
     make_files_and_cd(tmpdir, files)
 
     print(f"testing scenario {file_patterns}")
@@ -267,6 +268,7 @@ def test_create_file(tmpdir, num_nodes, file_patterns, files):
 
 @pytest.mark.parametrize(" num_nodes, file_patterns, files", content)
 def test_create_file_full_path(tmpdir, num_nodes, file_patterns, files):
+    "test find-kedro works with various file patterns with full path"
     make_files_and_cd(tmpdir, files)
 
     print(f"testing scenario {file_patterns}")

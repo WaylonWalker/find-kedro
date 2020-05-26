@@ -171,6 +171,7 @@ contents = [("file", content)]
 
 @pytest.mark.parametrize("name, num_nodes, files", content)
 def test_create_file(tmpdir, name, num_nodes, files):
+    "test find-kedro can find and assemble pipeines in various ways"
     make_files_and_cd(tmpdir, files)
 
     print(f"testing scenario {name}")

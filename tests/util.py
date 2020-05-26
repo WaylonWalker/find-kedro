@@ -1,3 +1,4 @@
+"helper methods for testing"
 import os
 import textwrap
 from collections import namedtuple
@@ -8,6 +9,7 @@ File = namedtuple("File", "name, contents")
 
 
 def make_files_and_cd(tmpdir, files):
+    "makes files and moves to that directory"
     for file in files:
         t = make_file(tmpdir, file)
         assert t.check()
@@ -15,6 +17,7 @@ def make_files_and_cd(tmpdir, files):
 
 
 def make_file(tmpdir, file):
+    "makes files for testing"
     directories = file.name.split("/")
     filename = directories.pop()
     t = tmpdir

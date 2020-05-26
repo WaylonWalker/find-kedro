@@ -17,6 +17,7 @@ __version__ = "0.1.0"
 
 
 def test_version():
+    "test cli version echo is correct"
     runner = CliRunner()
     result = runner.invoke(cli, ["--version"])
     assert result.exit_code == 0
@@ -24,12 +25,14 @@ def test_version():
 
 
 def test_help():
+    "test cli help command"
     runner = CliRunner()
     result = runner.invoke(cli, ["--help"])
     assert result.exit_code == 0
 
 
 def test_version_verbose():
+    "test cli version command with verbose"
     runner = CliRunner()
     result = runner.invoke(cli, ["--version", "--verbose"])
     assert result.exit_code == 0
@@ -38,6 +41,7 @@ def test_version_verbose():
 
 @pytest.mark.parametrize(" num_nodes, patterns, files", pattern_content)
 def test_pattern(tmpdir, num_nodes, patterns, files):
+    "test cli can find nodes with various patterns"
     make_files_and_cd(tmpdir, files)
     runner = CliRunner()
     if type(patterns) == list:
@@ -55,6 +59,7 @@ def test_pattern(tmpdir, num_nodes, patterns, files):
 
 @pytest.mark.parametrize(" num_nodes, patterns, files", pattern_content)
 def test_pattern_verbose(tmpdir, num_nodes, patterns, files):
+    "test cli can find nodes with various patterns in verbose mode"
     make_files_and_cd(tmpdir, files)
     runner = CliRunner()
     result = runner.invoke(cli, ["--verbose",])
@@ -63,6 +68,7 @@ def test_pattern_verbose(tmpdir, num_nodes, patterns, files):
 
 @pytest.mark.parametrize(" num_nodes, file_patterns, files", file_pattern_content)
 def test_file_pattern(tmpdir, num_nodes, file_patterns, files):
+    "test cli can find nodes with various file patterns"
     make_files_and_cd(tmpdir, files)
 
     runner = CliRunner()
@@ -83,6 +89,7 @@ def test_file_pattern(tmpdir, num_nodes, file_patterns, files):
 
 @pytest.mark.parametrize("name, num_nodes, files", discover_content)
 def test_file_patterns(tmpdir, name, num_nodes, files):
+    "test cli can works with discover content parameters"
     make_files_and_cd(tmpdir, files)
     runner = CliRunner()
     # if type(patterns) == list:

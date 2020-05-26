@@ -1,3 +1,10 @@
+"""
+steel-toes uses distutils to create a python package.
+To Build steel-toes as a Python package
+    $ python setup.py sdist bdist_wheel --bdist-dir ~/temp/bdistwheel
+To setup local Development
+    $ pip install -e .
+"""
 from pathlib import Path
 
 from setuptools import find_packages, setup
