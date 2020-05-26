@@ -1,2 +1,3 @@
 pytest
 more-itertools
+pytest-cov
