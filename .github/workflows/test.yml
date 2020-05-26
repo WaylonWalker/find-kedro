@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "ubuntu-16.04", "windows-latest", "windows-2016", "macos-latest"]
-        kedro-versions: ['kedro', 'kedro==0.15.9', 'kedro==0.15.8', 'kedro==0.15.7', 'kedro==0.15.6', 'kedro==0.15.5', 'kedro==0.15.4', 'kedro==0.15.3', 'kedro==0.15.2', 'kedro==0.15.1', 'kedro==0.15.0']
+        kedro-versions: ['kedro', 'kedro==0.15.9']
         python-version: [3.6, 3.7]
     runs-on: "${{ matrix.os }}"
 
