@@ -146,13 +146,13 @@ def _generate_pipelines(nodes: Dict, verbose: bool = False) -> Dict[str, Pipelin
     * 0.1.0 - deduplicated `__default__` pipeline
     """
     pipelines = {}
-    _vprint(f"nodes for generating pipelines", verbose, nodes=nodes)
+    _vprint("nodes for generating pipelines", verbose, nodes=nodes)
     for _node in nodes:
         pipelines[_node] = Pipeline(nodes[_node])
     pipelines["__default__"] = Pipeline(
         set(_flatten([p.nodes for p in pipelines.values()]))
     )
-    _vprint(f"generated pipelines", verbose, pipelines=pipelines)
+    _vprint("generated pipelines", verbose, pipelines=pipelines)
     return pipelines
 
 
