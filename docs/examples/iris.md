@@ -1,9 +1,7 @@
 # iris
 
-
 The iris dataset is a data science classic.  It is part of the default kedro pipeline
-as of `0.15.9` if you choose to include an example pipeline, which we will use 
-for this example. This is a great starting point for your very first experience
+as of `0.15.9` if you choose to include an example pipeline, which we will use for this example. This is a great starting point for your very first experience
 with `find-kedro`.  If you are already using kedro with a completed project there
 is no need to refactor it to use `find-kedro`, but if you want to implement it on
 an active project this example will show you how to refactor your existing `kedro`
@@ -12,20 +10,19 @@ pipeline to use `find-kedro`.
 
 ## Create a new Environment and activate
 
-I **CANNOT** under emphasize the importance separate environments for each project, example, or
+I **CANNOT** underemphasize the importance of separate environments for each project, for example, or
 toy that you create.  Not only does it help your project be easier to run later,
 but it prevents you from causing major issues inside of environments for you active
-development projects.  The **LAST** thing I want you to do is to wreck a day of 
-work by installing `find-kedro` and wrecking dependencies in a working environment.
+development projects.  The **LAST** thing I want you to do is to wreck a day of work by installing `find-kedro` and wrecking dependencies in a working environment.
 
 ### example using conda
 
 ``` console
 $ conda create -n find-kedro-iris python=3.7 -y
-$ actiavte find-kedro-iris
+$ activate find-kedro-iris
 ```
 
-## Install find-kedro and check version
+## Install find-kedro and check the version
 
 Let's get after it and install `kedro` and `find-kedro` into our new environment.
 As I am unsure of what the iris example will look like in future versions of `kedro`
@@ -33,7 +30,7 @@ I recommend following along with `kedro==0.15.9`, but feel free to try it with
 the latest if you are feeling adventurous.
 
 > ## STOP
-> Before continuting make sure that you are using a separate environment for this example using, conda, pipenv, virtualenv or whatever your environment manager of choice is
+> Before continuing on make sure that you are using a separate environment for this example using, conda, pipenv, virtualenv, or your environment manager of choice important.
 
 ``` console
 $ pip install kedro==0.15.9 find-kedro
@@ -72,7 +69,7 @@ Options:
 
 
 > # Checkpoint
-> At this point your development machine is setup for the `find-kedro-iris` project.
+> At this point your development machine is set up for the `find-kedro-iris` project.
 > Next we will get the project started by using `kedro-new`
 
 
@@ -114,10 +111,9 @@ Change directory to the project generated in /mnt/c/temp/find-kedro-examples/fin
 A best-practice setup includes initialising git and creating a virtual environment before running `kedro install` to install project-specific dependencies. Refer to the Kedro documentation: https://kedro.readthedocs.io/
 ```
 
-Next cd into the `find-kedro-iris` example directory install kedro dependencies and
-the project itself.  It is very important that if you have any imports that are 
-fully qualified/absolute i.e `from find_kedro_iris.pipeline.data_engineering import pipeline`
-that you install the project otherwise `find-kedro` will not not be able to process
+Next cd into the `find-kedro-iris` example directory, install kedro dependencies, and
+the project itself.  It is very important that if you have any imports that are fully qualified/absolute i.e `from find_kedro_iris.pipeline.data_engineering import pipeline`
+that you install the project otherwise `find-kedro` will not be able to process
 the imports.
 
 ``` console
@@ -138,8 +134,8 @@ $ find-kedro
 ## implement find-kedro compatible pipelines
 
 `find-kedro` works by pattern matching variables that are either an iterable of nodes,
-a node, or a pipeline. By default the pattern is set to any variable with `pipeline`
-or `node` in the name.  In order to utilize the existing codebase we will simply
+a node, or a pipeline. By default, the pattern is set to any variable with `pipeline`
+or `node` in the name.  In order to utilize the existing codebase, we will simply
 append the following to the end of 
 `src/find_kedro_iris/pipelines/data_science/pipeline.py`.
 
@@ -154,10 +150,10 @@ And essentially the same to the end of
 + data_engineering_pipeline = create_pipeline()
 ```
 
-**NOTE** its important to have the word `pipeline` in the name, or to change the
+**NOTE** its important to have the word `pipeline` in the name or to change the
 default `patterns` in `find-kedro`.
 
-At this point you should be able to run `find-kedro` and see that it is picking up
+At this point, you should be able to run `find-kedro` and see that it is picking up
 pipelines from both modules, and that both modules get combined into the `__default__`
 pipeline.
 
