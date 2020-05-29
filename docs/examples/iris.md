@@ -33,7 +33,7 @@ the latest if you are feeling adventurous.
 > Before continuing on make sure that you are using a separate environment for this example using, conda, pipenv, virtualenv, or your environment manager of choice important.
 
 ``` console
-$ pip install kedro==0.15.9 find-kedro
+$ pip install kedro find-kedro
 ```
 
 let's check out our installation before moving forward and make sure everything
@@ -41,7 +41,7 @@ looks right.
 
 ``` console
 $ kedro --version
-find-kedro, version 0.15.9
+find-kedro, version 0.16.1
 ```
 
 ``` console
@@ -110,6 +110,8 @@ Good for first-time users. (default=N)
 Change directory to the project generated in /mnt/c/temp/find-kedro-examples/find-kedro-iris
 A best-practice setup includes initialising git and creating a virtual environment before running `kedro install` to install project-specific dependencies. Refer to the Kedro documentation: https://kedro.readthedocs.io/
 ```
+
+After you intall the default iris template go ahead and append `find-kedro` to the end of your `find-kedro-iris/src/requirements.txt` file.
 
 Next cd into the `find-kedro-iris` example directory, install kedro dependencies, and
 the project itself.  It is very important that if you have any imports that are fully qualified/absolute i.e `from find_kedro_iris.pipeline.data_engineering import pipeline`
