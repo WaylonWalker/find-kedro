@@ -63,10 +63,7 @@ def find_kedro(
 
     nodes = {}
 
-    for module in modules:
-        module_nodes = _discover_nodes(
-            modules[module], cleansed_patterns, verbose=verbose
-        )
+    for module, module_nodes in modules.items():
         if module_nodes != []:
             nodes[module] = module_nodes
     _vprint("module found with nodes pattern match", verbose, nodes=nodes)
@@ -251,8 +248,7 @@ def _flatten(items: Iterable) -> Generator:
     """Yield items from any nested iterable"""
     for x in items:
         if isinstance(x, Iterable) and not isinstance(x, (str, bytes)):
-            for sub_x in _flatten(x):
-                yield sub_x
+            yield from _flatten(x)
         else:
             yield x
 
