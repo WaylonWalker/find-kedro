@@ -39,7 +39,7 @@ class ProjectContext(KedroContext):
 
 ### Creating nodes
 
-`find-kedro` will not execute any functions.  It will simply look for variables that match the `pattern` and identify if they are a `kedro.pipeline.Pipeline`, `kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.  Node`'s.  If so, it will collect them into the dictionary of pipelines.
+`find-kedro` will not execute any functions.  It will simply look for variables that match the `pattern` and identify if they are a `kedro.pipeline.Pipeline`, `kedro.pipeline.nodes.Node`, or a list of `kedro.pipeline.nodes.Node`'s.  If so, it will collect them into the dictionary of pipelines.
 
 There are typically **three** ways that pipelines are constructed with `find-kedro`; **lists**, **single-nodes**, and **pipelines**.
 
