@@ -228,21 +228,26 @@ def _discover_nodes(
             return pipeline
         if isinstance(pipeline, Pipeline):
             return pipeline
+        if callable(pipeline) and pipeline.__name__ == "create_pipeline":
+            return pipeline()
         else:
             return None
 
     def pipeline_to_nodes(pipeline: Union[Node, Pipeline]) -> List[Node]:
         if isinstance(pipeline, Pipeline):
             return pipeline.nodes
-        if isinstance(pipeline, list):
-            return pipeline
         else:
             return [pipeline]
 
     asserted_nodes = [assert_pipeline_types(n) for n in list(_flatten(nodes))]
+    _vprint("asserted_nodes", verbose, nodes=asserted_nodes)
     not_none_nodes = [n for n in list(_flatten(asserted_nodes)) if n is not None]
+    _vprint("not_none_nodes", verbose, nodes=not_none_nodes)
     listed_nodes = list(_flatten([pipeline_to_nodes(n) for n in not_none_nodes]))
+    listed_nodes = list(_flatten([pipeline_to_nodes(n) for n in not_none_nodes]))
+    _vprint("listed_nodes", verbose, nodes=listed_nodes)
     deduped_nodes = list(_flatten(list(set(listed_nodes))))
+    _vprint("deduped_nodes", verbose, nodes=deduped_nodes)
 
     return deduped_nodes
 
