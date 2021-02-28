@@ -177,6 +177,68 @@ contents = [
         }
     """,
     ),
+    (
+        "function_nodes",
+        2,
+        """\
+    from kedro.pipeline import Pipeline, node
+
+    def create_pipeline():
+        return Pipeline([
+        node(lambda x: x, "a", "b", name="a_b"),
+        node(lambda x: x, "b", "c", name="b_c"),
+        ]
+        )
+    """,
+    ),
+    (
+        "function_single_nodes",
+        4,
+        """\
+    from kedro.pipeline import Pipeline, node
+
+    node_a_b = node(lambda x: x, "a", "b", name="a_b")
+    node_b_c = node(lambda x: x, "b", "c", name="b_c")
+
+    def create_pipeline():
+        return Pipeline([
+        node(lambda x: x, "fa", "fb", name="fa_fb"),
+        node(lambda x: x, "fb", "fc", name="fb_fc"),
+        ]
+        )
+    """,
+    ),
+    (
+        "function_list_nodes",
+        4,
+        """\
+    from kedro.pipeline import Pipeline, node
+
+    nodes = [
+        node(lambda x: x, "a", "b", name="a_b"),
+        node(lambda x: x, "b", "c", name="b_c")
+    ]
+
+    def create_pipeline():
+        return Pipeline([
+        node(lambda x: x, "fa", "fb", name="fa_fb"),
+        node(lambda x: x, "fb", "fc", name="fb_fc"),
+        ]
+        )
+    """,
+    ),
+    (
+        "list_create_pipeline",
+        2,
+        """\
+    from kedro.pipeline import Pipeline, node
+
+    creaste_pipeline = [
+        node(lambda x: x, "a", "b", name="a_b"),
+        node(lambda x: x, "b", "c", name="b_c")
+    ]
+    """,
+    ),
 ]
 
 
