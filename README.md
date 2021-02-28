@@ -28,6 +28,24 @@ pip install find-kedro
 
 The recommended usage of `find-kedro` is to implement it directly into your projects `run.py` module
 
+## > 0.17.x +
+
+After `0.17.x` `find-kedro` can be added to the ProjectsHooks as the return statement of `register_pipelines` in `hooks.py`.
+
+``` python
+class ProjectHooks:
+    @hook_impl
+    def register_pipelines(self) -> Dict[str, Pipeline]:
+        return find_kedro(
+            file_patterns=["*.py"],
+            directory=Path(__file__).parent / "pipelines",
+        )
+```
+
+### < 0.17.x
+
+Before `0.17.x` `find-kedro` can be added to the `ProjectContext` in `run.py`.
+
 ``` python
 from kedro.context import KedroContext
 from find_kedro import find_kedro
@@ -134,6 +152,31 @@ split_node = Pipeline(
 )
 ```
 
+### `create_pipeline`
+
+`find-kedro` now looks for `create_piepeline` functions, then adds those to your pipelines.
+
+``` python
+# my-project/pipelinies/data_engineering/pipeline
+from kedro.pipeline import node, Pipeline
+from .nodes import split_data
+
+def create_pipelines():
+    return Pipeline(
+    [
+        node(
+            split_data,
+            ["example_iris_data", "params:example_test_data_ratio"],
+            dict(
+                train_x="example_train_x",
+                train_y="example_train_y",
+                test_x="example_test_x",
+                test_y="example_test_y",
+            ),
+        )
+    ]
+)
+```
 
 ### Fully Qualified imports
 
