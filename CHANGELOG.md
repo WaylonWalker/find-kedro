@@ -1,5 +1,9 @@
 # Upcoming Release
 
+# 0.1.1
+
+FEAT: added support for create_pipeline
+
 # 0.1.0
 
 deduplicated `__default__` pipeline
