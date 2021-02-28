@@ -13,7 +13,7 @@ from test_file_pattern import content as file_pattern_content
 from test_pattern import content as pattern_content
 from util import make_files_and_cd
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 
 def test_version():
