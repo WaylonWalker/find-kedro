@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+     <loc>https://find-kedro.waylonwalker.com/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/motivation/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/python-usage/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/cli-usage/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/examples/iris/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/examples/more-nodes/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/examples/titanic/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://find-kedro.waylonwalker.com/examples/spaceflights/</loc>
+     <lastmod>2021-02-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>

@@ -1,0 +1,772 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://find-kedro.waylonwalker.com/examples/iris/">
+      
+      <link rel="shortcut icon" href="../../art/logo.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.3">
+    
+    
+      
+        <title>iris - find-kedro</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1655a90d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/termynal.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-165412239-1","https://find-kedro.waylonwalker.com"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="#ffcc00" data-md-color-accent="teal">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iris" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="https://find-kedro.waylonwalker.com" title="find-kedro" class="md-header__button md-logo" aria-label="find-kedro">
+      
+  <img src="../../art/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            find-kedro
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              iris
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/waylonwalker/find-kedro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    waylonwalker/find-kedro
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://find-kedro.waylonwalker.com" title="find-kedro" class="md-nav__button md-logo" aria-label="find-kedro">
+      
+  <img src="../../art/logo.png" alt="logo">
+
+    </a>
+    find-kedro
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/waylonwalker/find-kedro" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    waylonwalker/find-kedro
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        find-kedro
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../motivation/" class="md-nav__link">
+        motivation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python-usage/" class="md-nav__link">
+        python-usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli-usage/" class="md-nav__link">
+        cli-usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          iris
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        iris
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-new-environment-and-activate" class="md-nav__link">
+    Create a new Environment and activate
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a new Environment and activate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-conda" class="md-nav__link">
+    example using conda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-find-kedro-and-check-the-version" class="md-nav__link">
+    Install find-kedro and check the version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    STOP
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../more-nodes/" class="md-nav__link">
+        More Nodes Example
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../titanic/" class="md-nav__link">
+        Titanic
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spaceflights/" class="md-nav__link">
+        Spaceflights
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-new-environment-and-activate" class="md-nav__link">
+    Create a new Environment and activate
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a new Environment and activate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-conda" class="md-nav__link">
+    example using conda
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-find-kedro-and-check-the-version" class="md-nav__link">
+    Install find-kedro and check the version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    STOP
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="iris">iris<a class="headerlink" href="#iris" title="Permanent link">&para;</a></h1>
+<p>The iris dataset is a data science classic.  It is part of the default kedro pipeline
+as of <code>0.15.9</code> if you choose to include an example pipeline, which we will use for this example. This is a great starting point for your very first experience
+with <code>find-kedro</code>.  If you are already using kedro with a completed project there
+is no need to refactor it to use <code>find-kedro</code>, but if you want to implement it on
+an active project this example will show you how to refactor your existing <code>kedro</code>
+pipeline to use <code>find-kedro</code>.</p>
+<h2 id="create-a-new-environment-and-activate">Create a new Environment and activate<a class="headerlink" href="#create-a-new-environment-and-activate" title="Permanent link">&para;</a></h2>
+<p>I <strong>CANNOT</strong> underemphasize the importance of separate environments for each project, for example, or
+toy that you create.  Not only does it help your project be easier to run later,
+but it prevents you from causing major issues inside of environments for you active
+development projects.  The <strong>LAST</strong> thing I want you to do is to wreck a day of work by installing <code>find-kedro</code> and wrecking dependencies in a working environment.</p>
+<h3 id="example-using-conda">example using conda<a class="headerlink" href="#example-using-conda" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>conda create -n find-kedro-iris <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7 -y
+<span class="gp">$ </span>activate find-kedro-iris
+</code></pre></div>
+<h2 id="install-find-kedro-and-check-the-version">Install find-kedro and check the version<a class="headerlink" href="#install-find-kedro-and-check-the-version" title="Permanent link">&para;</a></h2>
+<p>Let's get after it and install <code>kedro</code> and <code>find-kedro</code> into our new environment.
+As I am unsure of what the iris example will look like in future versions of <code>kedro</code>
+I recommend following along with <code>kedro==0.15.9</code>, but feel free to try it with
+the latest if you are feeling adventurous.</p>
+<blockquote>
+<h2 id="stop">STOP<a class="headerlink" href="#stop" title="Permanent link">&para;</a></h2>
+<p>Before continuing on make sure that you are using a separate environment for this example using, conda, pipenv, virtualenv, or your environment manager of choice important.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip install kedro find-kedro
+</code></pre></div>
+<p>let's check out our installation before moving forward and make sure everything
+looks right.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kedro --version
+<span class="go">find-kedro, version 0.16.1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>find-kedro --version
+<span class="go">find-kedro, version 0.0.5</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>find-kedro --help
+
+<span class="go">Usage: find-kedro [OPTIONS]</span>
+
+<span class="go">Options:</span>
+<span class="go">  --file-patterns TEXT       glob-style file patterns for Python node module</span>
+<span class="go">                             discovery</span>
+
+<span class="go">  --patterns TEXT            prefixes or glob names for Python pipeline, node,</span>
+<span class="go">                             or list object discovery</span>
+
+<span class="go">  -d, --directory DIRECTORY  Path to save the static site to</span>
+<span class="go">  -v, --verbose              Prints extra information for debugging</span>
+<span class="go">  -V, --version              Prints version and exits</span>
+<span class="go">  --help                     Show this message and exit.</span>
+</code></pre></div>
+<blockquote>
+<h1 id="checkpoint">Checkpoint<a class="headerlink" href="#checkpoint" title="Permanent link">&para;</a></h1>
+<p>At this point your development machine is set up for the <code>find-kedro-iris</code> project.
+Next we will get the project started by using <code>kedro-new</code></p>
+</blockquote>
+<h2 id="kedro-new">kedro new<a class="headerlink" href="#kedro-new" title="Permanent link">&para;</a></h2>
+<p>Like I said before, this example is built off of the default kedro iris template.
+When Running <code>kedro new</code> make sure that you answer <code>y</code> to the last question in order
+to generate the example project.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kedro new
+</code></pre></div>
+<h2 id="follow-through-these-answers">Follow through these answers<a class="headerlink" href="#follow-through-these-answers" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Project Name:
+<span class="o">=============</span>
+Please enter a human readable name <span class="k">for</span> your new project.
+Spaces and punctuation are allowed.
+ <span class="o">[</span>New Kedro Project<span class="o">]</span>: Find Kedro Iris
+Repository Name:
+<span class="o">================</span>
+Please enter a directory name <span class="k">for</span> your new project repository.
+Alphanumeric characters, hyphens and underscores are allowed.
+Lowercase is recommended.
+ <span class="o">[</span>find-kedro-iris<span class="o">]</span>:
+Python Package Name:
+<span class="o">====================</span>
+Please enter a valid Python package name <span class="k">for</span> your project package.
+Alphanumeric characters and underscores are allowed.
+Lowercase is recommended. Package name must start with a letter or underscore.
+ <span class="o">[</span>find_kedro_iris<span class="o">]</span>:
+Generate Example Pipeline:
+<span class="o">==========================</span>
+Do you want to generate an example pipeline <span class="k">in</span> your project?
+Good <span class="k">for</span> first-time users. <span class="o">(</span><span class="nv">default</span><span class="o">=</span>N<span class="o">)</span>
+ <span class="o">[</span>y/N<span class="o">]</span>: y
+Change directory to the project generated <span class="k">in</span> /mnt/c/temp/find-kedro-examples/find-kedro-iris
+A best-practice setup includes initialising git and creating a virtual environment before running <span class="sb">`</span>kedro install<span class="sb">`</span> to install project-specific dependencies. Refer to the Kedro documentation: https://kedro.readthedocs.io/
+</code></pre></div>
+<p>After you intall the default iris template go ahead and append <code>find-kedro</code> to the end of your <code>find-kedro-iris/src/requirements.txt</code> file.</p>
+<p>Next cd into the <code>find-kedro-iris</code> example directory, install kedro dependencies, and
+the project itself.  It is very important that if you have any imports that are fully qualified/absolute i.e <code>from find_kedro_iris.pipeline.data_engineering import pipeline</code>
+that you install the project otherwise <code>find-kedro</code> will not be able to process
+the imports.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span> find-kedro-iris
+<span class="gp">$ </span>kedro install
+<span class="gp">$ </span>pip install -e src
+</code></pre></div>
+<p>Running <code>find-kedro</code> at this point will render an empty pipeline.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>find-kedro
+<span class="go">{</span>
+<span class="go">  &quot;__default__&quot;: []</span>
+<span class="go">}</span>
+</code></pre></div>
+<h2 id="implement-find-kedro-compatible-pipelines">implement find-kedro compatible pipelines<a class="headerlink" href="#implement-find-kedro-compatible-pipelines" title="Permanent link">&para;</a></h2>
+<p><code>find-kedro</code> works by pattern matching variables that are either an iterable of nodes,
+a node, or a pipeline. By default, the pattern is set to any variable with <code>pipeline</code>
+or <code>node</code> in the name.  In order to utilize the existing codebase, we will simply
+append the following to the end of 
+<code>src/find_kedro_iris/pipelines/data_science/pipeline.py</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="gi">+ data_science_pipeline = create_pipeline()</span>
+</code></pre></div>
+<p>And essentially the same to the end of
+<code>src/find_kedro_iris/pipelines/data_engineering/pipeline.py</code></p>
+<div class="highlight"><pre><span></span><code><span class="gi">+ data_engineering_pipeline = create_pipeline()</span>
+</code></pre></div>
+<p><strong>NOTE</strong> its important to have the word <code>pipeline</code> in the name or to change the
+default <code>patterns</code> in <code>find-kedro</code>.</p>
+<p>At this point, you should be able to run <code>find-kedro</code> and see that it is picking up
+pipelines from both modules, and that both modules get combined into the <code>__default__</code>
+pipeline.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>find-kedro
+
+<span class="go">{</span>
+<span class="go">  &quot;__default__&quot;: [</span>
+<span class="go">    &quot;split_data([example_iris_data,params:example_test_data_ratio]) -&gt; [example_test_x,example_test_y,example_train_x,example_train_y]&quot;,</span>
+<span class="go">    &quot;train_model([example_train_x,example_train_y,parameters]) -&gt; [example_model]&quot;,</span>
+<span class="go">    &quot;predict([example_model,example_test_x]) -&gt; [example_predictions]&quot;,</span>
+<span class="go">    &quot;report_accuracy([example_predictions,example_test_y]) -&gt; None&quot;</span>
+<span class="go">  ],</span>
+<span class="go">  &quot;src.find_kedro_iris.pipelines.data_engineering.pipeline&quot;: [</span>
+<span class="go">    &quot;split_data([example_iris_data,params:example_test_data_ratio]) -&gt; [example_test_x,example_test_y,example_train_x,example_train_y]&quot;</span>
+<span class="go">  ],</span>
+<span class="go">  &quot;src.find_kedro_iris.pipelines.data_science.pipeline&quot;: [</span>
+<span class="go">    &quot;train_model([example_train_x,example_train_y,parameters]) -&gt; [example_model]&quot;,</span>
+<span class="go">    &quot;predict([example_model,example_test_x]) -&gt; [example_predictions]&quot;,</span>
+<span class="go">    &quot;report_accuracy([example_predictions,example_test_y]) -&gt; None&quot;</span>
+<span class="go">  ]</span>
+<span class="go">}</span>
+</code></pre></div>
+<p>I do prefer a bit shorter/cleaner pipeline names so I would personally pass in
+<code>src/find_kedro_iris/pipelines</code> as the directory to <code>find-kedro</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>find-kedro -d src/find_kedro_iris/pipelines
+<span class="go">{</span>
+<span class="go">  &quot;__default__&quot;: [</span>
+<span class="go">    &quot;split_data([example_iris_data,params:example_test_data_ratio]) -&gt; [example_test_x,example_test_y,example_train_x,example_train_y]&quot;,</span>
+<span class="go">    &quot;train_model([example_train_x,example_train_y,parameters]) -&gt; [example_model]&quot;,</span>
+<span class="go">    &quot;predict([example_model,example_test_x]) -&gt; [example_predictions]&quot;,</span>
+<span class="go">    &quot;report_accuracy([example_predictions,example_test_y]) -&gt; None&quot;</span>
+<span class="go">  ],</span>
+<span class="go">  &quot;data_engineering.pipeline&quot;: [</span>
+<span class="go">    &quot;split_data([example_iris_data,params:example_test_data_ratio]) -&gt; [example_test_x,example_test_y,example_train_x,example_train_y]&quot;</span>
+<span class="go">  ],</span>
+<span class="go">  &quot;data_science.pipeline&quot;: [</span>
+<span class="go">    &quot;train_model([example_train_x,example_train_y,parameters]) -&gt; [example_model]&quot;,</span>
+<span class="go">    &quot;predict([example_model,example_test_x]) -&gt; [example_predictions]&quot;,</span>
+<span class="go">    &quot;report_accuracy([example_predictions,example_test_y]) -&gt; None&quot;</span>
+<span class="go">  ]</span>
+<span class="go">}</span>
+</code></pre></div>
+<h2 id="implement-find-kedro-plugin">Implement find-kedro plugin<a class="headerlink" href="#implement-find-kedro-plugin" title="Permanent link">&para;</a></h2>
+<p>Now you can swap out <code>create_pipelines</code> for <code>find-kedro</code>, and it will be responsible
+for collecting pipelines for you.</p>
+<p>line 36 of src/find_kedro_iris/run.py
+<div class="highlight"><pre><span></span><code><span class="gd">- from find_kedro_iris.pipeline import create_pipelines</span>
+<span class="gi">+ from find_kedro import find_kedro</span>
+</code></pre></div></p>
+<p>line 48 of 
+<div class="highlight"><pre><span></span><code>    def _get_pipelines(self) -&gt; Dict[str, Pipeline]:
+<span class="gd">-       return create_pipelines()</span>
+<span class="gi">+       return find_kedro()</span>
+</code></pre></div></p>
+<h2 id="remove-create_pipelines">remove create_pipelines<a class="headerlink" href="#remove-create_pipelines" title="Permanent link">&para;</a></h2>
+<p>Since <code>find-kedro</code> is now responsible for collecting pipelines for you, the 
+<code>src/find_kedro_iris/pipelines.py</code> is no longer used and can be removed.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>rm src/find_kedro_iris/pipelines.py
+</code></pre></div>
+<h2 id="final-step">Final Step<a class="headerlink" href="#final-step" title="Permanent link">&para;</a></h2>
+<p>🤞Fingers crossed it is time to run your pipeline. Running <code>kedro run</code> in your console 
+should yield the following result.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kedro run
+
+<span class="go">2020-05-02 23:15:21,755 - root - INFO - ** Kedro project find-kedro-iris</span>
+<span class="go">fatal: not a git repository (or any parent up to mount point /mnt)</span>
+<span class="go">Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).</span>
+<span class="go">2020-05-02 23:15:22,411 - kedro.versioning.journal - WARNING - Unable to git describe /mnt/c/temp/find-kedro-examples/find-kedro-iris</span>
+<span class="go">/home/username/miniconda3/envs/find-kedro-iris/lib/python3.7/site-packages/fsspec/implementations/local.py:33:</span>
+<span class="go">FutureWarning: The default value of auto_mkdir=True has been deprecated and will be changed to auto_mkdir=False by default in a future release.</span>
+<span class="go">  FutureWarning,</span>
+<span class="go">2020-05-02 23:15:24,849 - kedro.io.data_catalog - INFO - Loading data from `example_iris_data` (CSVDataSet)...2020-05-02 23:15:24,877 - kedro.io.data_catalog - INFO - Loading data from `params:example_test_data_ratio` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,879 - kedro.pipeline.node - INFO - Running node: split_data([example_iris_data,params:example_test_data_ratio]) -&gt; [example_test_x,example_test_y,example_train_x,example_train_y]</span>
+<span class="go">2020-05-02 23:15:24,928 - kedro.io.data_catalog - INFO - Saving data to `example_train_x` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,929 - kedro.io.data_catalog - INFO - Saving data to `example_train_y` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,930 - kedro.io.data_catalog - INFO - Saving data to `example_test_x` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,931 - kedro.io.data_catalog - INFO - Saving data to `example_test_y` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,933 - kedro.runner.sequential_runner - INFO - Completed 1 out of 4 tasks</span>
+<span class="go">2020-05-02 23:15:24,934 - kedro.io.data_catalog - INFO - Loading data from `example_train_x` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,936 - kedro.io.data_catalog - INFO - Loading data from `example_train_y` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,939 - kedro.io.data_catalog - INFO - Loading data from `parameters` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:24,940 - kedro.pipeline.node - INFO - Running node: train_model([example_train_x,example_train_y,parameters]) -&gt; [example_model]</span>
+<span class="go">2020-05-02 23:15:25,536 - kedro.io.data_catalog - INFO - Saving data to `example_model` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:25,537 - kedro.runner.sequential_runner - INFO - Completed 2 out of 4 tasks</span>
+<span class="go">2020-05-02 23:15:25,538 - kedro.io.data_catalog - INFO - Loading data from `example_model` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:25,539 - kedro.io.data_catalog - INFO - Loading data from `example_test_x` (MemoryDataSet)...2020-05-02 23:15:25,539 - kedro.pipeline.node - INFO - Running node: predict([example_model,example_test_x]) -&gt; [example_predictions]</span>
+<span class="go">2020-05-02 23:15:25,543 - kedro.io.data_catalog - INFO - Saving data to `example_predictions` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:25,544 - kedro.runner.sequential_runner - INFO - Completed 3 out of 4 tasks</span>
+<span class="go">2020-05-02 23:15:25,545 - kedro.io.data_catalog - INFO - Loading data from `example_predictions` (MemoryDataSet)...</span>
+<span class="go">2020-05-02 23:15:25,546 - kedro.io.data_catalog - INFO - Loading data from `example_test_y` (MemoryDataSet)...2020-05-02 23:15:25,546 - kedro.pipeline.node - INFO - Running node: report_accuracy([example_predictions,example_test_y]) -&gt; None</span>
+<span class="go">2020-05-02 23:15:25,547 - src.find_kedro_iris.pipelines.data_science.nodes - INFO - Model accuracy on test set: 96.67%</span>
+<span class="go">2020-05-02 23:15:25,549 - kedro.runner.sequential_runner - INFO - Completed 4 out of 4 tasks</span>
+<span class="go">2020-05-02 23:15:25,550 - kedro.runner.sequential_runner - INFO - Pipeline execution completed successfully.</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../cli-usage/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              cli-usage
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../more-nodes/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              More Nodes Example
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ca5457b8.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
+      
+        <script src="../../js/termynal.js"></script>
+      
+        <script src="../../js/custom.js"></script>
+      
+    
+  </body>
+</html>
