@@ -1,4 +1,3 @@
-
 name: Build-Docs
 
 on:
@@ -11,19 +10,19 @@ jobs:
   build-docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.6
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.6
-    - name: install mkdocs
-      run: pip install mkdocs mkdocs-material
-    - name: build docs
-      run: mkdocs build
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v1.4.0
-      with:
-        target_branch: docs
-        build_dir: site
-      env:
-        GITHUB_TOKEN: ${{ secrets.pat }}
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.6
+      - name: install mkdocs
+        run: pip install mkdocs mkdocs-material
+      - name: build docs
+        run: mkdocs build
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1.4.0
+        with:
+          target_branch: docs
+          build_dir: site
+        env:
+          GITHUB_TOKEN: ${{ secrets.pat }}
