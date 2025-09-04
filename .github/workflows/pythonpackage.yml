@@ -58,7 +58,7 @@ jobs:
           echo "------"
       - name: pypi-publish
         # if: github.ref == 'refs/heads/master'
-        uses: pypa/gh-action-pypi-publish@v1.1.0
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           # PyPI user
           # Password for your PyPI user or an access token
